@@ -1,0 +1,217 @@
+.todo-block {
+    margin: 100px auto;
+    max-width: 400px;
+    font-size: 16px;
+    max-height: 450px;
+    overflow: auto;
+    position: relative;
+    min-height: 130px;
+    div {
+        color: rgba(0, 0, 0, 0.7);
+        user-select: none;
+    }
+   
+    .todo-head {
+        z-index: 5;
+        height: 40px;
+        display: flex;
+        position: sticky;
+        min-width: 400px;
+        align-items: center;
+        background-color: #dad8d8;
+        border-radius: 10px;
+        .first-column {
+            width: 110px;
+            padding: 0 10px;
+            position: relative;
+            height: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .second-column {
+            width: 195px;
+            padding: 0 10px;
+            position: relative;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            span {
+                max-width: 230px;
+                overflow: hidden;
+                line-height: 30px;
+                text-overflow: ellipsis;
+            }
+        }
+        .third-column {
+            width: 20px;
+            padding: 0 10px;
+            position: relative;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, .95) 20%, rgba(255, 255, 255, .7) 45%, rgba(255, 255, 255, .5) 65%, rgba(255, 255, 255, 0) 100%);
+        }
+        &:hover {
+            .add-task {
+                visibility: visible;
+                opacity: 1;
+                z-index: 2;
+            }
+
+            input {
+                width: calc(100% - 23px);
+            }
+        }
+        
+        .add-task {
+            visibility: hidden;
+            position: absolute;
+            opacity: 0;
+            transition: 0.3s;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+
+            &:before {
+                content: '';
+                width: 14px;
+                height: 3px;
+                background: gray;
+                position: absolute;
+                left: 3px;
+                border-radius: 3px;
+                top: calc(50% - 1.5px);
+                transform: rotate(180deg);
+            }
+
+            &:after {
+                content: '';
+                width: 14px;
+                height: 3px;
+                background: gray;
+                position: absolute;
+                left: 3px;
+                border-radius: 3px;
+                top: calc(50% - 1.5px);
+                transform: rotate(-90deg);
+            }
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+    .todo-body {
+        padding-top: 10px;
+        overflow: auto;
+        max-height: 400px;
+        position: relative;
+        .todo-body-stroke:last-child {
+            margin-bottom: 10px;
+        }
+        .todo-body-stroke {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            div {
+                width: 195px;
+                padding: 0 10px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                span {
+                    max-width: 195px;
+                    overflow: hidden;
+                    display: inline-block;
+                    height: 30px;
+                    line-height: 30px;
+                    text-overflow: ellipsis;
+                }
+            }
+            div:first-child,
+            div:first-child {
+                width: 110px;
+            }
+            div:last-child,
+            div:last-child {
+                width: 20px;
+                justify-content: center;
+                overflow: visible;
+                text-align: center;
+            }
+            &:hover {
+                background-color: rgb(234 234 234);
+            }
+        }
+        .deleting-stroke {
+            div {
+                transition: all 0.3s 0.8s;
+                height:0;
+                opacity: 0;
+                overflow: hidden;
+                span {
+                    transition: all 0.3s 0.8s;
+                    height: 0;
+                    opacity: 0;
+                }
+            }
+            i {
+                transition: all 0.3s 0.8s;
+                height:0;
+                opacity: 0; 
+                overflow: hidden;
+            }
+            .btn-delete {
+                height: 0;
+                transition: height 0.3s 0.8s;
+            }
+            .btn-delete:before{
+                transform: rotate(0);
+                width: 333px;
+            }
+            .btn-delete:after{
+                transform: rotate(0);
+            }
+        }
+    }
+    
+    .todo-foot-shadow {
+        z-index: 5;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(360deg, white 0%, rgba(255, 255, 255, .95) 20%, rgba(255, 255, 255, .7) 45%, rgba(255, 255, 255, .5) 65%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+    .todo-task-name input {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        transition: 0.3s;
+        text-overflow: ellipsis;
+        background-color: transparent;
+        border-bottom: 1px solid gray;
+    }
+}

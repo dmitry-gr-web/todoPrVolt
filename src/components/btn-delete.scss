@@ -1,0 +1,36 @@
+.btn-delete {
+    height: 30px;
+    width: 20px;
+    position: relative;
+    display: block;
+    margin: auto;
+    z-index: 4;
+    cursor: pointer;
+    &:before {
+        content: '';
+        width: 20px;
+        height: 3px;
+        transition: transform 0.3s, width 0.5s 0.3s;
+        background: gray;
+        position: absolute;
+        right:0;
+        border-radius: 3px;
+        top:calc(50% - 1.5px);
+        transform: rotate(45deg);
+    }
+    &:after {
+        content: '';
+        width: 20px;
+        height: 3px;
+        background: gray;
+        position: absolute;
+        transition: 0.3s;
+        right:0;
+        border-radius: 3px;
+        top:calc(50% - 1.5px);
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        opacity: 0.5;
+    }
+}
